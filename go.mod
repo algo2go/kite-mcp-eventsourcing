@@ -1,4 +1,4 @@
-module github.com/zerodha/kite-mcp-server/kc/eventsourcing
+module github.com/algo2go/kite-mcp-eventsourcing
 
 go 1.25.0
 
@@ -14,7 +14,6 @@ go 1.25.0
 //
 // Replace block has 5 entries — root + broker + kc/isttz + kc/logger
 // + kc/money — same shape as kc/cqrs (commit-prior). kc/alerts is
-// reached via root (it lives in github.com/zerodha/kite-mcp-server),
 // and kc/alerts itself transitively reaches kc/isttz, kc/logger,
 // broker, kc/money — all already-extracted modules that need explicit
 // replace lines so GOWORK=off resolution works.
@@ -23,17 +22,17 @@ go 1.25.0
 // commit a5e7e76): moderate-fan-in packages extracted in a single
 // dispatch. This is 19/24 (commit 3 of 4 in this dispatch).
 require (
-	github.com/stretchr/testify v1.10.0
 	github.com/algo2go/kite-mcp-broker v0.1.0
 	github.com/algo2go/kite-mcp-isttz v0.1.0 // indirect
 	github.com/algo2go/kite-mcp-logger v0.1.0 // indirect
 	github.com/algo2go/kite-mcp-money v0.1.0 // indirect
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
-	github.com/google/uuid v1.6.0
 	github.com/algo2go/kite-mcp-alerts v0.1.0
 	github.com/algo2go/kite-mcp-domain v0.1.0
+	github.com/google/uuid v1.6.0
 )
 
 require (
@@ -56,8 +55,4 @@ require (
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	modernc.org/sqlite v1.46.1 // indirect
-)
-
-replace (
-	github.com/zerodha/kite-mcp-server => ../..
 )
